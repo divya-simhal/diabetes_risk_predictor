@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --color-paper: #f6f7f4;
+  --color-ink: #14211c;
+  --color-ink-soft: #4a5a52;
+  --color-line: #dbe2db;
+  --color-teal: #1f6f5c;
+  --color-teal-dark: #15493c;
+  --color-coral: #d7572d;
+  --color-amber: #c98a1f;
+  --color-green: #2f8f5b;
+  --color-card: #ffffff;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-line: var(--color-line);
+  --color-teal: var(--color-teal);
+  --color-teal-dark: var(--color-teal-dark);
+  --color-coral: var(--color-coral);
+  --color-amber: var(--color-amber);
+  --color-green: var(--color-green);
+  --color-card: var(--color-card);
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-data: var(--font-jetbrains-mono);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--color-teal);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.baseline-rule {
+  background-image: linear-gradient(
+    to right,
+    var(--color-line) 0,
+    var(--color-line) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  background-size: 12px 1px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  height: 1px;
+}
+
+@keyframes pulse-draw {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.pulse-line path {
+  stroke-dasharray: 1000;
+  animation: pulse-draw 2.4s ease-out forwards;
+}
